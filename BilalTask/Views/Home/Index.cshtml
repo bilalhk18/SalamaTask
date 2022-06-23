@@ -1,0 +1,70 @@
+﻿@model BilalTask.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Car Details</h1>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <table style="width:100%">
+            <tr>
+                <td width="50%">
+                    @Html.LabelFor(model => model.cm)
+                    <br />
+                    @Html.DropDownListFor(m => m.MakeID, Model.cm, "Please select", new { onchange = "document.forms[0].submit();" })
+                    <br />
+                    <br />
+                    @Html.LabelFor(model => model.carMol)
+                    <br />
+                    @Html.DropDownListFor(m => m.molId, Model.carMol, "Please select")
+                    <br />
+                    <br />
+                    @Html.LabelFor(model => model.body)
+                    <br />
+                    @Html.DropDownListFor(m => m.body, Model.body, "Please select")
+                    <br />
+                    <br />
+                    @Html.LabelFor(model => model.carTrim)
+                    <br />
+                    @Html.DropDownListFor(m => m.carTrim, Model.carTrim, "Please select")
+                </td>
+                <td width="50%">
+                    <table>
+                        <tr><td><p>Vehicle Information</p></td></tr>
+                        <tr><td>@Html.LabelFor(model => model.cm):<label id="lblmake"></label></td></tr>
+                        <tr><td>@Html.LabelFor(model => model.carMol):<label id="lblMol"></label></td></tr>
+                        <tr><td>@Html.LabelFor(model => model.body):<label id="lblbody"></label></td></tr>
+                        <tr><td>@Html.LabelFor(model => model.carTrim):<label id="lbltrim"></label></td></tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(function () {
+        debugger;
+        if ($("#MakeID").val() != "") {
+            $("#lblmake").text($("#MakeID option:selected").text());
+        }
+        $('#molId').change(function () {
+            if ($("#molId").val() != "") {
+                $("#lblMol").text($("#molId option:selected").text());
+            }
+        });
+        $('#body').change(function () {
+            if ($("#body").val() != "") {
+                $("#lblbody").text($("#body option:selected").text());
+            }
+        });
+        $('#carTrim').change(function () {
+            if ($("#carTrim").val() != "") {
+                $("#lbltrim").text($("#carTrim option:selected").text());
+            }
+        });
+    });
+
+</script>

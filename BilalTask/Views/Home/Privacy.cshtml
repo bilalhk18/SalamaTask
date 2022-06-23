@@ -1,0 +1,29 @@
+﻿@model List<BilalTask.Models.BenefitsGrid>
+@{
+    ViewData["Title"] = "Benefits";
+}
+<h1>@ViewData["Title"]</h1>
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Benefits</th>
+                <th>Your Plan(Agency) (AED 1,990.00)</th>
+                <th>Your Plan(Non Agency) (AED 1,008.00)</th>
+                <th>Third Party (AED 700.00)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th >@item.Benefit</th>
+                    <td>@item.Agency</td>
+                    <td>@item.Nonagency</td>
+                    <td>@item.Thirdparty</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
